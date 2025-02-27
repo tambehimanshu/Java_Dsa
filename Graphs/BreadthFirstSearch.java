@@ -54,7 +54,7 @@ public class BreadthFirstSearch {
     public static void main(String[]args){
         int v =7;
 
-        @SuppressWarnings("unchecked") 
+        @SuppressWarnings("unchecked")  
         ArrayList<Edge> graph[]= new ArrayList[v];
         creategraph(graph);
         bfs(graph,v);
