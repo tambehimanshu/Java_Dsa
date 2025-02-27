@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BreadthFirstSearch {
+public class Practice {
     static class Edge{
         int src;
         int dest;
@@ -25,34 +25,38 @@ public class BreadthFirstSearch {
             graph[2].add(new Edge(2, 0, 3));
         }
 
-        public static void bfs(ArrayList<Edge> graph[], int v) {
-            Queue<Integer> q = new LinkedList<>();
-            boolean vis[] = new boolean[v];
-    
-            // Loop to handle disconnected graphs
-            for (int start = 0; start < v; start++) {
-                if (!vis[start]) {
-                    q.add(start);
-    
-                    while (!q.isEmpty()) {
-                        int current = q.remove();
-                        if (!vis[current]) {
-                            System.out.print(current + " ");
-                            vis[current] = true;
-    
-                            for (int i = 0; i < graph[current].size(); i++) {
-                                Edge e = graph[current].get(i);
-                                if (!vis[e.dest]) {
-                                    q.add(e.dest);
-                                }
-                            }
+       public static void bfs(ArrayList<Edge> graph[],int v){
+        Queue <Integer> q = new LinkedList<>();
+
+        boolean vis[]= new boolean[v];
+
+        for(int i =0;i<v;i++){
+            if(!vis[i]){
+                q.add(i);
+            
+
+            while (!q.isEmpty()) {
+                int current = q.remove();
+                if (!vis[current]) {
+                    System.out.println(current+" ");
+                    vis[current]=true;
+
+                    for(int j= 0;j<graph[current].size();j++){
+                        Edge e = graph[current].get(j);
+                        if(!vis[e.dest]){
+                            q.add(e.dest);
                         }
                     }
+                    
+                    
                 }
             }
+                
+            }
         }
+       }
     public static void main(String[]args){
-        int v =7;
+        int v =3;
 
         @SuppressWarnings("unchecked")  
         ArrayList<Edge> graph[]= new ArrayList[v];
