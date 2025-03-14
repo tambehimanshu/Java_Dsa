@@ -21,8 +21,8 @@ public class Practice{
 
         graph[0].add(new Edge(0, 1, 1));
         graph[0].add(new Edge(0, 2, 1));
-        graph[0].add(new Edge(0, 3, 0));
-        graph[1].add(new Edge(1, 0, 2));
+        graph[0].add(new Edge(0, 4, 0));
+        graph[1].add(new Edge(1, 4, 2));
         graph[2].add(new Edge(2, 1, 1));
         graph[2].add(new Edge(2, 0, 3));
 
@@ -57,15 +57,37 @@ public class Practice{
 
 
     }
+    public static void dfs(ArrayList<Edge> graph[], int  curr ,boolean vis[]){
+        System.out.print(curr +" ");
+        vis[curr]=true;
+
+        for(int i =0;i<graph[curr].size();i++){
+            Edge e = graph[curr].get(i);
+
+            if(!vis[e.dest]){
+                dfs(graph,e.dest,vis);
+            }
+        }
+    }
+
+
     public static void main(String[]args){
-        int v =4;
+        int v =5;
 
        @SuppressWarnings("unchecked")
        ArrayList<Edge> [] graph= new ArrayList[v];
 
         creategraph(graph);
 
-        bfs(graph ,v);
+        // bfs(graph ,v);
+
+        boolean vis[]= new boolean[v];
+       
+        for(int i =0;i<v;i++){
+            if(!vis[i]){
+                dfs(graph ,i, vis);
+            }
+        }
         System.out.println();
 
 
