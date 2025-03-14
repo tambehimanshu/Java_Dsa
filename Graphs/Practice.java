@@ -1,14 +1,16 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Practice{
     static class Edge{
         int src;
-        int dst;
+        int dest;
         int wt;
 
         public Edge(int s,int d,int wt){
             this.src=s;
-            this.dst=d;
+            this.dest=d;
             this.wt=wt;
         }
     }
@@ -20,6 +22,39 @@ public class Practice{
         graph[0].add(new Edge(0, 1, 1));
         graph[0].add(new Edge(0, 2, 1));
         graph[0].add(new Edge(0, 3, 0));
+        graph[1].add(new Edge(1, 0, 2));
+        graph[2].add(new Edge(2, 1, 1));
+        graph[2].add(new Edge(2, 0, 3));
+
+    }
+
+    public static void bfs(ArrayList<Edge> graph[], int v){
+      Queue<Integer> q = new LinkedList<>();
+      boolean vis [] = new boolean[v];
+
+
+      for(int i =0;i<graph.length;i++){
+        if(! vis[i]){
+            q.add(i);
+        }
+
+        while(!q.isEmpty()){
+            int curr = q.remove();
+        if(!vis[curr]){
+            System.out.print(curr);
+            vis[curr]= true;
+
+            for(int j=0;j<graph[curr].size();j++){
+                Edge e = graph[curr].get(j);
+                if(!vis[e.dest]){
+                    q.add(e.dest);
+                }
+            }
+        }
+        }
+        
+      }
+
 
     }
     public static void main(String[]args){
@@ -30,14 +65,9 @@ public class Practice{
 
         creategraph(graph);
 
-        for (int i = 0; i < graph.length; i++) {
-            System.out.print("Vertex " + i + ": ");
-            for (int j = 0; j < graph[i].size(); j++) {  
-                Edge e = graph[i].get(j);  
-                System.out.print("(" + e.dst + ", " + e.wt + ") ");
-            }
-            System.out.println();
-        }
+        bfs(graph ,v);
+        System.out.println();
+
 
     }
 }
