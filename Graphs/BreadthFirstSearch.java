@@ -29,7 +29,6 @@ public class BreadthFirstSearch {
             Queue<Integer> q = new LinkedList<>();
             boolean vis[] = new boolean[v];
     
-            // Loop to handle disconnected graphs
             for (int start = 0; start < v; start++) {
                 if (!vis[start]) {
                     q.add(start);

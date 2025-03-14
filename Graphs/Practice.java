@@ -22,7 +22,7 @@ public class Practice{
         graph[0].add(new Edge(0, 1, 1));
         graph[0].add(new Edge(0, 2, 1));
         graph[0].add(new Edge(0, 4, 0));
-        graph[1].add(new Edge(1, 4, 2));
+        graph[1].add(new Edge(1, 2, 2));
         graph[2].add(new Edge(2, 1, 1));
         graph[2].add(new Edge(2, 0, 3));
 
@@ -70,7 +70,27 @@ public class Practice{
         }
     }
 
+public static boolean cycdet(ArrayList<Edge> graph[],int curr,boolean vis[],boolean rec []){
+    vis[curr]=true;
 
+    rec[curr]=true;
+    for(int i =0 ;i<graph[curr].size();i++){
+        Edge e = graph[curr].get(i);
+
+        if(rec[e.dest ])
+        {
+             return true;
+
+        }else if (!vis[e.dest]){
+            if(cycdet(graph, e.dest, vis, rec)){
+                return true;
+            }
+
+        }
+    }
+    rec[curr]=false;
+    return false;
+}
     public static void main(String[]args){
         int v =5;
 
@@ -79,16 +99,21 @@ public class Practice{
 
         creategraph(graph);
 
-        // bfs(graph ,v);
 
         boolean vis[]= new boolean[v];
-       
-        for(int i =0;i<v;i++){
-            if(!vis[i]){
-                dfs(graph ,i, vis);
-            }
+        boolean rec[]= new boolean[v];
+
+        // dfs(graph, 0,vis);
+
+        boolean res = cycdet(graph,0, vis,rec);
+    
+        if(res){
+            System.out.println("cycle");
+        }else {
+            System.out.println("not cyc");
         }
-        System.out.println();
+       
+    
 
 
     }
