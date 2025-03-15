@@ -18,7 +18,7 @@ public class DisjoinSet {
             return x;
         } 
 
-       return  find(par[x]);
+       return  par[x]=find(par[x]); // optimize way
     }
     public static void union(int a,int b){
         //union is used to check the height btn two element and if a > b then a is parent of b and vise versa
