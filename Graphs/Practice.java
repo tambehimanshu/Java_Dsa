@@ -2,119 +2,103 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Practice{
+
+
+public class Practice {
+
     static class Edge{
         int src;
         int dest;
         int wt;
 
-        public Edge(int s,int d,int wt){
+        public Edge(int s ,int d ,int wt){
             this.src=s;
             this.dest=d;
             this.wt=wt;
         }
     }
-    public static void creategraph(ArrayList<Edge> graph[]){
-        for(int i=0;i<graph.length;i++){
-            graph[i]= new ArrayList<>();
+    public static void createGraph(ArrayList<Edge>[]graph,int flights[][]){
+        for(int i =0;i<graph.length;i++){
+            graph[i]=new ArrayList<>();
         }
 
-        graph[0].add(new Edge(0, 1, 1));
-        graph[0].add(new Edge(0, 2, 1));
-        graph[0].add(new Edge(0, 4, 0));
-        graph[1].add(new Edge(1, 2, 2));
-        graph[2].add(new Edge(2, 1, 1));
-        graph[2].add(new Edge(2, 0, 3));
+        for(int i =0;i<flights.length;i++){
+            int src = flights[i][0];
+            int dest= flights[i][1];
+            int wt = flights[i][2];
 
-    }
+            Edge e = new Edge(src, dest, wt);
+            graph[src].add(e);
 
-    public static void bfs(ArrayList<Edge> graph[], int v){
-      Queue<Integer> q = new LinkedList<>();
-      boolean vis [] = new boolean[v];
-
-
-      for(int i =0;i<graph.length;i++){
-        if(! vis[i]){
-            q.add(i);
-        }
-
-        while(!q.isEmpty()){
-            int curr = q.remove();
-        if(!vis[curr]){
-            System.out.print(curr);
-            vis[curr]= true;
-
-            for(int j=0;j<graph[curr].size();j++){
-                Edge e = graph[curr].get(j);
-                if(!vis[e.dest]){
-                    q.add(e.dest);
-                }
-            }
-        }
-        }
-        
-      }
-
-
-    }
-    public static void dfs(ArrayList<Edge> graph[], int  curr ,boolean vis[]){
-        System.out.print(curr +" ");
-        vis[curr]=true;
-
-        for(int i =0;i<graph[curr].size();i++){
-            Edge e = graph[curr].get(i);
-
-            if(!vis[e.dest]){
-                dfs(graph,e.dest,vis);
-            }
         }
     }
 
-public static boolean cycdet(ArrayList<Edge> graph[],int curr,boolean vis[],boolean rec []){
-    vis[curr]=true;
+    static class Info {
+        int v;
+        int cost;
+        int stops;
 
-    rec[curr]=true;
-    for(int i =0 ;i<graph[curr].size();i++){
-        Edge e = graph[curr].get(i);
 
-        if(rec[e.dest ])
-        {
-             return true;
-
-        }else if (!vis[e.dest]){
-            if(cycdet(graph, e.dest, vis, rec)){
-                return true;
-            }
-
+        public Info(int v,int c,int s){
+            this.v=v;
+            this.cost=c;
+            this.stops=s;
         }
     }
-    rec[curr]=false;
-    return false;
+    public static int cheapestft(int n, int flights [][ ],int src ,int dest ,int k){
+@SuppressWarnings("unchecked")
+ArrayList<Edge>[]graph= new ArrayList[n];
+createGraph(graph ,flights);
+
+int dist[]=new int[n];
+for(int i=0;i<n;i++){
+    if(i != src){
+        dist[i]=Integer.MAX_VALUE;
+    }
 }
-    public static void main(String[]args){
-        int v =5;
 
-       @SuppressWarnings("unchecked")
-       ArrayList<Edge> [] graph= new ArrayList[v];
+Queue<Info> q =new LinkedList<>();
+q.add(new Info(src, 0, 0));
 
-        creategraph(graph);
+while(!q.isEmpty()){
+    Info curr= q.remove();
+    if(curr.stops>k){
+        break;
+    }
+    for(int i =0;i<graph[curr.v].size();i++){
+        Edge e = graph[curr.v].get(i);
+        int u =e.src;
+        int v= e.dest;
+        int wt =e.wt;
 
+        if(curr.cost + wt <dist[v]&& curr.stops<=k){
+            dist[v]=curr.cost+wt;
+            q.add(new Info(e.dest, dist[v], curr.stops+1));
 
-        boolean vis[]= new boolean[v];
-        boolean rec[]= new boolean[v];
-
-        // dfs(graph, 0,vis);
-
-        boolean res = cycdet(graph,0, vis,rec);
-    
-        if(res){
-            System.out.println("cycle");
-        }else {
-            System.out.println("not cyc");
         }
-       
+    }
+}
+if(dist[dest]==Integer.MAX_VALUE){
+    return -1;
+}else{
+    return dist[dest];
+}
+
+
+    }
+    public static void main(String[]args){
+        int n= 4 ;
+
+        int flights [][]={{ 0,1,100},{1,2,100},{2,0,100},{1,3,600},{2,3,200}};
+        int src = 0, dest =3 , k=1;
+        
+         int res= cheapestft(n,flights,src,dest,k);
+
+         if(res==-1){
+            System.out.println("dest not reached");
+         }else{
+            System.out.println("reacherd"+res);
+         }
     
-
-
     }
 }
