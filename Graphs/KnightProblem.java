@@ -30,7 +30,9 @@ public class KnightProblem {
                 if(nx>=1 && ny >= 1 && nx <= N && ny<= N && !vis[nx][ny]){ 
 
                     if(nx==targetX && ny == targetY){
+                        
                         return steps+1;
+                       
                     }
 
                     vis[nx][ny]=true;
