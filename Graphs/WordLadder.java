@@ -32,14 +32,22 @@ public class WordLadder {
             if(word.equals(target)==true)
             return steps;
 
-            for(int i = 0;i<word.length();i++){
-                char replaceCharArray[]=word.toCharArray();
+            //hit
+
+            for(int i = 0;i<word.length();i++){ 
+                char replaceCharArray[]=word.toCharArray();//h
+                char original = replaceCharArray[i];
                 for(char ch='a';ch<='z';ch++){
-                   char original = replaceCharArray[i];
+
+                    //replace h with a to z
+                    // ait
+                    //bit
+                 // cit ...
+                   
                     replaceCharArray[i]=ch;
 
                     String replacedWord = new String (replaceCharArray);
-
+               /// it exists int the set
                     if(st.contains(replacedWord)==true){
                         st.remove(replacedWord);
                         q.add(new Pair(replacedWord, steps+1));
