@@ -1,62 +1,27 @@
-import java.util.*;
+import java.util.ArrayList;
 
-class Job {
-    int id;
-    int deadline;
-    int profit;
+public class Practice {
+    public static int selectionActivity(int start[],int end[] ,int count,ArrayList<Integer>ans){
+        ans.add(0);
+        int lastend=end[0];
+        count =1;
 
-    public Job(int id, int deadline,int profit){
-        this.id=id;
-        this.deadline = deadline;
-        this.profit = profit;
-
-    }
-}
-
-public  class Practice {
-    public static void jobSeq(Job[]jobs){
-        int n = jobs.length;
-        Arrays.sort(jobs,(a,b)->b.profit-a.profit);
-
-        int maxdeadline = 0;
-        for(Job job:jobs){
-            maxdeadline += Math.max(maxdeadline,job.deadline);
-        }
-
-        int []slot=new int[maxdeadline+1];
-        Arrays.fill(slot, -1);
-
-        int totalProfit= 0, countJobs=0;
-        List<Integer> jobOrder = new ArrayList<>();
-
-        for(Job job :jobs){
-            for(int i=Math.min(maxdeadline, job.deadline);i>0;i--){
-                if(slot[i]==-1){
-                    slot[i]=job.id;
-                    totalProfit += job.profit;
-                    countJobs++;
-                    jobOrder.add(job.id);
-                    break;
-                }
+        for(int  i =1;i<end.length;i++){
+            if(start[i]>= lastend){
+                ans.add(i);
+                count++;
+                lastend = end[i];
             }
         }
-
-        System.out.println("total jobs : "+countJobs);
-        System.out.println("profit "+totalProfit);
-        System.out.println("jobOrder "+jobOrder);
+        return count;
     }
-
-
     public static void main(String[] args) {
-        Job []jobs={
-            new Job(1, 2, 100),
-            new Job(2, 1, 50),
-            new Job(3, 2, 10),
-            new Job(4, 1, 20),
-            new Job(5, 3, 80)
-        };
+        int start[]={2,4,0,5,8,5};
+        int end []={3,5,6,7,9,9};
+        int count =0;
 
-
-        jobSeq(jobs);
+        ArrayList<Integer> ans = new ArrayList<>();
+          int res = selectionActivity(start,end,count,ans);
+          System.out.println(res);
     }
 }
