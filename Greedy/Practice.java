@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Practice {
     public static int selectionActivity(int start[],int end[] ,int count,ArrayList<Integer>ans){
@@ -15,13 +16,25 @@ public class Practice {
         }
         return count;
     }
-    public static void main(String[] args) {
-        int start[]={2,4,0,5,8,5};
-        int end []={3,5,6,7,9,9};
-        int count =0;
 
-        ArrayList<Integer> ans = new ArrayList<>();
-          int res = selectionActivity(start,end,count,ans);
-          System.out.println(res);
+    public static int findCountOfChild(int greedy[],int size[]){
+        Arrays.sort(greedy);
+        Arrays.sort(size);
+        int child =0;
+        int cookies =0;
+        while(child<greedy.length && cookies<size.length){
+            if(size[cookies]>= greedy[child]){
+                child++;
+            }
+            cookies++;
+        }
+        return child;
+    }
+    public static void main(String[] args) {
+       int greedy[]={1,5,3,3,4};
+       int size[]={4,2,1,2,1,3};
+
+       int child = findCountOfChild(greedy,size);
+       System.out.println("no of childern thar get cookies: "+child);
     }
 }
