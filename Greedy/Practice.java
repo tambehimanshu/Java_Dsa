@@ -30,11 +30,25 @@ public class Practice {
         }
         return child;
     }
-    public static void main(String[] args) {
-       int greedy[]={1,5,3,3,4};
-       int size[]={4,2,1,2,1,3};
 
-       int child = findCountOfChild(greedy,size);
-       System.out.println("no of childern thar get cookies: "+child);
+    public static boolean canPlaceFolower(int folwerBed[],int n){
+        int folwerBedSize =folwerBed.length;
+        for(int i =0;i<folwerBedSize;i++){
+            boolean prev = i==0 || folwerBed[i-1]==0;
+            boolean future =i== folwerBedSize-1 || folwerBed[i+1]==0;
+            if(prev && future && folwerBed[i]==0){
+                folwerBed[i]=1;
+                n--;
+            }
+        }
+        return n<=0;
+    }
+    public static void main(String[] args) {
+       int folwerBed[]={1,0,0,0,1};
+       int n =2;
+
+
+       System.out.println("can placed flower : "+canPlaceFolower(folwerBed, n));
+
     }
 }
