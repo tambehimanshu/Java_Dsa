@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class Practice {
     public static int selectionActivity(int start[],int end[] ,int count,ArrayList<Integer>ans){
@@ -43,12 +44,51 @@ public class Practice {
         }
         return n<=0;
     }
+    public static int mincost(int n ,int m, Integer costVar[],Integer costHor[]){
+
+        Arrays.sort(costVar,Collections.reverseOrder());
+        Arrays.sort(costHor,Collections.reverseOrder());
+
+        int v =0;
+        int h=0;
+        int vp=1;
+        int hp =1;
+        int cost=0;
+
+        while(v<costVar.length && h<costHor.length){
+            if(costVar[v]<=costHor[h]){
+                cost += (costHor[h]*vp);
+                hp++;
+                h++;
+            }
+            else {
+                cost += (costVar[v]*hp);
+                v++;
+                vp++;
+            }
+
+        }
+        while (h<costHor.length) {
+            cost += (costHor[h]*vp);
+            hp++;
+            h++;
+            
+        }
+        while (v<costVar.length) {
+            cost+=(costVar[v]*hp);
+            vp++;
+            v++;
+            
+        }
+       return cost;
+    }
     public static void main(String[] args) {
-       int folwerBed[]={1,0,0,0,1};
-       int n =2;
+      int n =4;
+      int m =6;
+      Integer costVar[]={2,1,3,1,4};
+      Integer costHor[]={4,1,2};
+      int coutn =mincost(n,m ,costVar,costHor);
 
-
-       System.out.println("can placed flower : "+canPlaceFolower(folwerBed, n));
-
+      System.out.println("minimum cost : "+coutn);
     }
 }
