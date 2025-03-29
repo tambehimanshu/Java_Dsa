@@ -24,4 +24,5 @@ public class GridWays {
     }
     
 }
-//O(2^n+m)
+// tc O(2^n+m)
+//by using permintation tc O(m+n)
