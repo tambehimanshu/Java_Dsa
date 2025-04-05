@@ -12,8 +12,12 @@ public class Sorting {
         list.add(19);
 
         System.out.println(list);
-
+          // ascending
         Collections.sort(list);
+        System.out.println(list);
+
+        //descending 
+        Collections.sort(list,Collections.reverseOrder());
         System.out.println(list);
     }
 }
