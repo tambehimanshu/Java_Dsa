@@ -38,6 +38,19 @@ public class Basic {
         for(int i =list.size()-1;i>=0;i--){
             System.out.print(list.get(i)+" ");
         }
+
+        //maximum
+
+        int max = Integer.MIN_VALUE;
+        for(int i =0;i<list.size();i++){
+
+         max = Math.max(max,list.get(i));
+            // if(max< list.get(i)){
+            //     max = list.get(i);
+            // }
+                  System.out.println(max);
+        }
+  
     }
     
     
