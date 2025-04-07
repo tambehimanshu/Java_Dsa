@@ -147,6 +147,20 @@ public int helper(Node head , int key){
 public int recSearch(int key ){
     return helper(head, key);
 }
+
+public void reverse(){ // O(n)
+    Node prev = null;
+    Node curr= tail = head;
+
+    while (curr != null) {
+        Node next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr= next;
+        
+    }
+    head = prev;
+}
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         
@@ -163,9 +177,11 @@ public int recSearch(int key ){
       //ll.removefirst();
       //ll.removelast();
         ll.print();
-        System.out.println(ll.recSearch(2));
-        System.out.println(ll.recSearch(10));
-        System.out.println(size);
+        // System.out.println(ll.recSearch(2));
+        // System.out.println(ll.recSearch(10));
+        // System.out.println(size);
+        ll.reverse();
+        ll.print();
     
     }
 }
