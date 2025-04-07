@@ -161,7 +161,37 @@ public void reverse(){ // O(n)
     }
     head = prev;
 }
-    public static void main(String[] args) {
+
+public void deleteNthfromEnd(int n ){
+    //size;
+    int sz= 0;
+    Node temp = head;
+    while(temp != null){
+        temp =temp.next;
+        sz++;
+    }
+    if(n ==sz){
+        head = head.next; //remove first op
+        return;
+
+    }
+    //size - n;
+    //for finding the prev node 
+
+    int i =1;
+    int iToFind =sz-n;
+    Node prev =head;
+    while(i<iToFind){
+        prev = prev.next;
+        i++;
+
+    }
+    //when we find the nth prev node then 
+    prev.next = prev.next.next; // means now prev.next will store add of Nth+1 node ;
+    return;
+}
+
+public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         
         ll.addFirst(1);
@@ -180,8 +210,9 @@ public void reverse(){ // O(n)
         // System.out.println(ll.recSearch(2));
         // System.out.println(ll.recSearch(10));
         // System.out.println(size);
-        ll.reverse();
-        ll.print();
-    
+        // ll.reverse();
+        // ll.print();
+    ll.deleteNthfromEnd(3);
+    ll.print();
     }
 }
