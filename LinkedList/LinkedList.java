@@ -348,6 +348,48 @@ public Node mergeSorrt(Node head){ //O(nlogn)
     return merge(newLeft, newRight);
 }
 
+public void zigzag(){
+    // find mid
+    Node slow = head;
+    Node fast = head.next;
+    while (fast != null && fast.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+        
+    }
+
+    Node mid = slow;
+    // reverse 2nd half\
+
+    Node cur = mid.next;
+    mid.next = null;
+
+    Node prev =null;
+    Node next ;
+    while (cur != null) {
+        next = cur.next;
+        cur.next = prev ;
+
+        prev = cur;
+        cur = next;
+        
+    }
+    Node left = head;
+    Node right = prev;
+    Node nextl, nextR;
+
+    // 3rd merge - zigag
+    while(left != null && right != null){
+        nextl= left.next;
+        left.next = right;
+        nextR = right.next;
+        right.next = nextl;
+
+        left = nextl;
+        right = nextR;
+    }
+}
+
 public static void main(String[] args) {
 
     LinkedList ll = new LinkedList();
@@ -355,10 +397,10 @@ public static void main(String[] args) {
     ll.addFirst(2);
     ll.addFirst(3);
     ll.addFirst(4);
-    //ll.addFirst(5);
+    ll.addFirst(5);
 
     ll.print();
-    ll.head = ll.mergeSorrt(ll.head);
+    ll.zigzag();
     ll.print();
 
     // head = new Node(1);
