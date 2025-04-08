@@ -248,13 +248,52 @@ public static boolean  isCycle(){ // flyod's cycle finding algo
     }
     return false;
 }
+
+public static void removeCycle(){
+    //detect cycle 
+    Node slow = head;
+    Node fast = head;
+    boolean cycle = false;
+    while(fast != null && fast.next !=  null){
+        slow = slow.next    ;
+        fast =fast.next.next;
+        if(fast == slow ){
+            cycle = true;
+            break;
+        }
+
+    }
+    if(cycle == false){
+        return;
+    }
+
+    // find meeting point 
+    slow = head;
+    Node prev =null; //in prev last node will get stored after the loop
+    while (slow !=fast) {
+        prev =fast;
+        
+        slow= slow.next;
+        fast=fast.next;
+        
+    }
+    prev.next = null;
+
+
+
+
+}
 public static void main(String[] args) {
 
 
     head = new Node(1);
-    head.next =new Node(2);
+
+    Node temp = new Node(2);
+    head.next = temp;
     head.next.next = new Node(3);
-    head.next.next.next = null;
+    head.next.next.next = temp;
+    System.out.println(isCycle());
+    removeCycle();
     System.out.println(isCycle());
         // LinkedList ll = new LinkedList();
         
