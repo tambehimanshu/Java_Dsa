@@ -234,14 +234,35 @@ public boolean checkPalindrom(){
     }
     return true;
 }
+public static boolean  isCycle(){ // flyod's cycle finding algo 
+    Node fast = head;
+    Node slow = head;
+
+    while(fast != null && fast.next != null){
+        slow = slow.next;
+        fast = fast.next.next;
+
+        if(slow ==fast){
+            return true;
+        }
+    }
+    return false;
+}
 public static void main(String[] args) {
-        LinkedList ll = new LinkedList();
+
+
+    head = new Node(1);
+    head.next =new Node(2);
+    head.next.next = new Node(3);
+    head.next.next.next = null;
+    System.out.println(isCycle());
+        // LinkedList ll = new LinkedList();
         
-        ll.addFirst(1);
+        // ll.addFirst(1);
         
-        ll.addFirst(2);
+        // ll.addFirst(2);
         
-        ll.addFirst(1);
+        // ll.addFirst(1);
         
         //ll.addLast(3);
         
@@ -249,14 +270,14 @@ public static void main(String[] args) {
     
       //ll.removefirst();
       //ll.removelast();
-        ll.print();
+        // ll.print();
         // System.out.println(ll.recSearch(2));
         // System.out.println(ll.recSearch(10));
         // System.out.println(size);
         // ll.reverse();
         // ll.print();
     //ll.deleteNthfromEnd(3);
-    System.out.println(ll.checkPalindrom());
+    // System.out.println(ll.checkPalindrom());
       // ll.print();
     }
 }
