@@ -42,6 +42,29 @@ public class RemovelOfDuplicate {
         }
         System.out.println("Null");
      }
+
+     public static Node opti(Node head){  // tc O(n)  sc O(1)
+        if(head == null){
+            return null;
+        }
+
+        Node curr = head;
+
+        while (curr != null) {
+            Node runner = curr;
+
+            while(runner.next != null){
+                if(runner.next.data == curr.data){
+                    runner.next = runner.next.next; // skiping the duplicate node
+                }else {
+                    runner= runner.next; // runner +1
+                }
+            }
+            curr= curr.next; // curr +1
+            
+        }
+        return head;
+     }
     public static void main(String[] args) {
         Node head = new Node(1);
         head.next = new Node(2);
@@ -51,7 +74,7 @@ public class RemovelOfDuplicate {
 
         print(head);
 
-        head = removedup(head);
+        head = opti(head);
 
         print(head);
     }
