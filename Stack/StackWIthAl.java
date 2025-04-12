@@ -1,4 +1,4 @@
-package Stack;
+
 import java.util.*;
 
 public class StackWIthAl {
@@ -30,7 +30,28 @@ public class StackWIthAl {
             return list.get(list.size()-1);
             
         }
+
+        // public static boolean issEmpty(){
+        //     return list.size() == 0;
+
+        // }
+
+        // public static int pp(){
+        //     if(issEmpty()){
+        //         return -1;
+        //     }
+        //     int top = list.get(list.size()-1);
+        //     list.remove(list.size()-1);
+        // }
+        // public static void puh(int data){
+        //     list.add(data);
+        // }
+
+        // public static void peek(){
+        //     return list.get(liat.size()-1);
+        // }
     }
+
     public static void main(String[] args) {
         
         Stack s = new Stack();
