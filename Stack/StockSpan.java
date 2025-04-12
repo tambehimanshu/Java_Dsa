@@ -6,7 +6,9 @@ public class StockSpan {
     public static void stockss(int stocks[],int span[]){
         Stack<Integer> s = new Stack<>();
         span[0]=1;
-        s.push(0);for(int i =1;i<stocks.length;i++){
+        s.push(0); // here we add the index in the stack
+        
+        for(int i =1;i<stocks.length;i++){
             int currPrice = stocks[i];
             while (!s.isEmpty() && currPrice >stocks[s.peek()]) {
                 //remove small size elements
@@ -18,9 +20,9 @@ public class StockSpan {
                 span[i]= i+1;
             }
             else{
-                int prevHigh = s.peek();
-                span[i] = i-prevHigh;
-            }
+                int prevHigh = s.peek(); // 0 index is peek and that is stored in prevhigh
+                span[i] = i-prevHigh;   // for i =1 span[i] = 1- prevhigh(0)
+            } 
             s.push(i);
         }
     }
