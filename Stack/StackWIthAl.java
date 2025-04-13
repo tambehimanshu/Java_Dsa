@@ -8,6 +8,7 @@ public class StackWIthAl {
             return list.size() == 0;
         }
 
+        
         public static void push(int data){
             list.add (data);
         }
