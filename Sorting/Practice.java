@@ -5,24 +5,26 @@ public class Practice {
         
     
 
-    int arr[] ={3,2,5,4,6,8,5,1};
+   //selection sort 
 
-    for(int i =0;i<arr.length;i++){
-        boolean swapped = false;
-        for(int j =0;j<arr.length-i-1;j++){
-            if(arr[j]>arr[j+1]){
-                int temp = arr[j];
-                arr[j]= arr[j+1];
-                arr[j+1]= temp;
-                swapped = true;
-            }
-        }
-        if(swapped == false){
-            break;
+   int arr[]={3,9,4,1,7,2};
+
+   for(int i =0;i<arr.length;i++){
+    int smallest = i;
+    for(int j =i+1;j<arr.length;j++){
+        if(arr[smallest]> arr[j]){
+            smallest = j;
         }
     }
-    for(int i =0;i<arr.length;i++){
-        System.out.println(arr[i]+" ");
-    }
+    // if smallest get updated with j means there is a eleemnt smaller than i so swap 
+    // so now smallest = j and swap with i
+    // and if smallest = arr[i] is the smallest then the swap will be done with smallest of i and arr of i itself so now change will be seen
+    int temp = arr[smallest];
+    arr[smallest] = arr[i];
+    arr[i] = temp;
+   }
+   for(int i =0;i<arr.length;i++){
+    System.out.println(arr[i] +" ");
+   }
 }
 }
