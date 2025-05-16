@@ -4,6 +4,7 @@ public class RotateImage {
     
     public static void findImage(int [][] matrix){ //sc O(1)
         int n = matrix.length;
+        
 
         // transpose of the matriz  // tc O(n/2 * n/2)
 
@@ -38,6 +39,7 @@ public class RotateImage {
         int temp = matrix[i][j];
         matrix[i][j]= matrix[j][i];
         matrix[j][i]= temp;
+        
     }
     public static void main(String[] args) {
         int [][] matrix= {{1,2,3},
