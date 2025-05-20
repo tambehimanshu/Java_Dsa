@@ -12,7 +12,6 @@ public class RightLeftViewOfBinaryTree { //tc O(n) sc O(n)
             this.left = null;
             this.right= null;
         }
-    }
 
     static class BinaryTree{
         static int idx = -1;
