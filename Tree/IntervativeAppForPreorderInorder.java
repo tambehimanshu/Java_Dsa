@@ -82,13 +82,41 @@ public class IntervativeAppForPreorderInorder {
     return res;
 
    }
+
+   public static List<Integer> postOrder(Node root){ // tc O(n) sc O(n)
+    Node node = root;
+    Stack<Node> st1 = new Stack<Node>();
+    Stack<Node> st2 = new Stack<Node>();
+    List<Integer> res = new ArrayList<Integer>();
+
+    if(node == null){
+        return res;
+    }
+    st1.push(node);
+    while(!st1.isEmpty()){
+        node = st1.pop();
+        st2.push(node);
+        if (node.left != null) {
+            st1.push(node.left);
+        }
+        if(node.right !=null){
+            st1.push(node.right);
+        }
+    }
+    while(!st2.isEmpty()){
+        res.add(st2.pop().data);
+    }
+  return res;
+
+
+   }
     
 
     public static void main(String[] args) {
-        int []nodes = {1, 2, 3, -1, -1, 4, -1, 5, -1, -1, 6, -1, -1};
+        int []nodes = {1,2,4,-1,-1,5,-1,-1,3,-1,-1};
         BinaryTree tree = new BinaryTree();
          Node root = tree.buildTree(nodes);
-         List<Integer> res = findInorder(root);
+         List<Integer> res = postOrder(root);
          for(int show : res){
             System.out.print(show+" ");
          } 
