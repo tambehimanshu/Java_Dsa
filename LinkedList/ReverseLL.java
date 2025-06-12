@@ -16,11 +16,24 @@ public class ReverseLL {
             return head;
         }
 
-        Node newNode = revlist(head.next);
-        head.next.next= head;
-        head.next = null;
+        // recursive way  Node newNode = revlist(head.next);
+        // head.next.next= head;
+        // head.next = null;
 
-        return newNode;
+        // return newNode;
+
+        // optimized way tc O(n) sc O(1)
+        Node cur  = head, prev = null , next;
+
+        while(cur!= null){
+            next = cur.next;
+            cur.next = prev;
+
+            prev = cur;
+            cur = next;
+    
+        }
+        return prev;
     }
 public static void print(Node head){
     Node temp = head;
