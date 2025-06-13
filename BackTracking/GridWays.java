@@ -1,24 +1,32 @@
 package BackTracking;
 
+import java.util.Arrays;
+
 public class GridWays {
-    public static int grridway(int i,int j,int n ,int m){
+    public static int grridway(int i,int j,int dp[][]){
 
         //base case 
-        if(i==n-1 && j== m-1){
+        if(i==0 && j== 0){
             return 1;
         }
-        else if(i==n || j ==m){
+        else if(i<0|| j <0){
             return 0;
         }
-        int w1=grridway(i+1, j, n, m);
-        int w2 = grridway(i, j+1, n, m);
+        if(dp[i][j] != -1){
+            return dp[i][j];
+        }
+        int w1=grridway(i-1, j,dp);
+        int w2 = grridway(i, j-1,dp);
 
-        return w1+w2; 
+        return dp[i][j]=w1+w2; 
 
     }
     public static void main(String[] args) {
         int n =3 ,m=3;
-        System.out.println(grridway(0, 0, n, m));
+
+        int dp[][]= new int[n][m];
+        for(int []row :dp) Arrays.fill(row, -1);
+        System.out.println(grridway(2,2,dp));
 
 
     }

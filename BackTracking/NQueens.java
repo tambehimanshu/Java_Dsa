@@ -34,8 +34,8 @@ public class NQueens {
             if(isSafe(board,row,j)){
                 board[row][j]='Q';
                 nQueens(board, row+1);
-                board[row][j]='x';
-
+                board[row][j]='x'; // backtracking
+ 
             }
         
         }

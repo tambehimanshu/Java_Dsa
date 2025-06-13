@@ -51,7 +51,7 @@ public class Practice {
                         return true;
                     }
 
-                    suduko[row][col]=0;
+                    suduko[row][col]=0;  // step of backtracking
                 }
             }
             return  false;
