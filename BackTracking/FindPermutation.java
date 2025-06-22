@@ -1,6 +1,6 @@
 package BackTracking;
 
-public class FindPermutation {
+public class FindPermutation { //tc O(n) sc(n)
     public static void findper(String str, String ans){
         // base case 
         if(str.length()==0){
