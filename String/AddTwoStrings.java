@@ -40,8 +40,8 @@ public class AddTwoStrings {
 
     }
     public static void main(String[] args) {
-        String s1 = "1101";
-        String s2 = "111";
+        String s1 = "1101"; // 13
+        String s2 = "111"; // 7
 
         System.out.println(addTwo(s1, s2));
     }
