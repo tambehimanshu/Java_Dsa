@@ -38,6 +38,7 @@ public class Basicgraph {
         // Printing edges for node 2
         for (int i = 0; i < graph[1].size(); i++) {
             Edge e = graph[1].get(i);
+            
             System.out.println(e.dest + " " + e.wt);
         }
     }

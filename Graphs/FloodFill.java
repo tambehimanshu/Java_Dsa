@@ -19,6 +19,7 @@ public  static void helper(int [][]image,int sr,int sc,int color,boolean vis[][]
 
     //dowm
     helper(image, sr+1, sc, color, vis, orgcolor);
+    
 }
 
     public static int [][] floodfil(int [][]image,int sr,int sc,int color){ // sr=starting row sc = col

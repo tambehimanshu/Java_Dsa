@@ -13,7 +13,7 @@ public class FirstNonRepLetter {
             q.add(ch);
             freq[ch-'a']++;
 
-            while (!q.isEmpty() && freq[q.peek()-'a']> 1) {
+            while (!q.isEmpty() && freq[q.peek()-'a']> 1) {  // from elements which are greter than 1 
                 q.remove();
                 
             }

@@ -35,11 +35,15 @@ public class BasicBST {
     public static void main(String[] args) {
         int values[]= {5,1,3,4,2,7};
         Node root = null;
+        int key =0;
 
         for(int i=0;i<values.length;i++){
             root = insert(root, values[i]);
         }
 
+        inorder(root);
+        insert(root, key);
+        System.out.println();
         inorder(root);
 
     }

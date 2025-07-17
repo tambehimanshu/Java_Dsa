@@ -34,7 +34,7 @@ public class Histogram {
                 
             }
             if(s.isEmpty()){
-                nsr[i]= arr.length;
+                nsr[i]= arr.length; // n
             }
             else{
                 nsr[i]= s.peek();
@@ -47,7 +47,7 @@ public class Histogram {
         //j = nsr i =nsl
         for(int i =0;i<n;i++){
             int height = arr[i];
-            int width = nsr[i] - nsl[i]-1;
+            int width = nsr[i] - nsl[i]-1; //j-i-1
             int currArea = height * width;
             area= Math.max(currArea, area);
         }
@@ -55,7 +55,7 @@ public class Histogram {
 
     }
     public static void main(String[] args) {
-        int arr []= {2,4}; //height 
+        int arr []= {2,1,5,6,2,3}; //height 
      maxArea(arr);
 
     }

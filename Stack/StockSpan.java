@@ -10,13 +10,13 @@ public class StockSpan {
         
         for(int i =1;i<stocks.length;i++){
             int currPrice = stocks[i];
-            while (!s.isEmpty() && currPrice >stocks[s.peek()]) {
+            while (!s.isEmpty() && currPrice >=stocks[s.peek()]) { // s.peek means index 0 i.e stoks[0] nothing but 100
                 //remove small size elements
 
                 s.pop();
                 
             }
-            if(s.isEmpty()){
+            if(s.isEmpty()){    
                 span[i]= i+1;
             }
             else{

@@ -32,7 +32,7 @@ public class NextGreaterElement {
     }
     
     public static void main(String[] args) {
-        int arr[]={7,5,9,8,2,4};
+        int arr[]={7,5,6,8,2,4};
 
         int nextG[] = new int[arr.length];
         
