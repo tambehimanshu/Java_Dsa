@@ -16,7 +16,7 @@ class Dp{
                 int right = j<n-1 ?prev[j+1]:Integer.MAX_VALUE;
 
                 curr[j] = path[i][j]+ Math.min(up, Math.min(left, right)    );
-
+ 
             }
             prev =curr;
         }
