@@ -11,6 +11,7 @@ class dp{
                  dp[i][j] = 1+ dp[i-1][j-1];
                  sum = Math.max(sum, dp[i][j]);
                 }
+                else dp[i][j]=0;
             }
         }
         return sum;
