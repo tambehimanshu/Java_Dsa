@@ -24,7 +24,7 @@ public class SpiralTraversal {
                       matrix[bottom][i] =num++;
             }
        bottom--;
-        }
+        
        for(int i=bottom ;i>= top;i--){
         matrix[i][left] =num++;
        }
@@ -37,4 +37,5 @@ public class SpiralTraversal {
             }
             System.out.println();
         }
+}
 }
