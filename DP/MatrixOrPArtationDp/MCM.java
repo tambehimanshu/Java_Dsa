@@ -33,6 +33,27 @@ public class MCM {  // matrix chain multioplication
         return dp[i][j] = min; // store the result in dp array
             
     }
+    public static int matrixChainOrderTabu(int[] arr) {  // tc O(n^3) sc O(n^2)
+        int n = arr.length;
+        int[][] dp = new int[n][n];
+        for (int i = 1; i < n; i++) {
+            dp[i][i] = 0; // only one matrix, no multiplication needed
+        }
+        for(int i =n-1;i>=1;i--){
+            for(int j = i+1;j<n;j++){
+                int min = Integer.MAX_VALUE;
+
+                for(int k = i;k<j;k++){
+                int stepd = arr[i-1] * arr[k] * arr[j] + dp[i][k] + dp[k+1][j];
+
+                min = Math.min(min, stepd);
+                  dp[i][j] = min;
+                }
+               
+            }
+        }
+        return dp[1][n-1];
+    }
     public static void main(String[] args) {
         int arr[] = {10, 20, 30, 40, 50};
 
@@ -43,7 +64,9 @@ public class MCM {  // matrix chain multioplication
         }
        // System.out.println("Minimum number of multiplications is: " + matrixChainOrder(arr, 1, arr.length - 1));
 
-        System.out.println("multiplications with memoization is: " + matrixChainOrderMemo(arr, 1, arr.length - 1, dp));
+       // System.out.println("multiplications with memoization is: " + matrixChainOrderMemo(arr, 1, arr.length - 1, dp));
+
+        System.out.println("multiplications with tabulation is: " + matrixChainOrderTabu(arr));
     }
     
 }
