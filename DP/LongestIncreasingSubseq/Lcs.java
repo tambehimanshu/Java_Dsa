@@ -1,6 +1,7 @@
 package DP.LongestIncreasingSubseq;
 import java.util.*;
 
+
 public class Lcs {
     public static int funRec(int ind , int prev, int arr[],int n){
 
@@ -49,6 +50,39 @@ public class Lcs {
         }
         return maxi;
     }
+  public static int binarySearch(List<Integer> res , int target){
+int left =0, right = res.size()-1;
+
+while(left <= right){
+    int mid = (left + right) /2;
+
+    if(res.get(mid)>= target){
+        right= mid-1;
+    }
+    else{
+        left = mid+1;
+    }
+}
+return left;
+  }
+    public static int funBinarySearch(int []arr){
+        List<Integer> res = new ArrayList<>();
+        res.add(arr[0]);
+        
+        
+        for(int i =1;i<arr.length;i++){
+            if(arr[i]>res.get(res.size()-1)){  //res.size()-1 means the last element of res
+                res.add(arr[i]);
+               
+            }
+            else{
+                int ind = binarySearch(res,arr[i]);
+                res.set(ind, arr[i]);
+            }
+        }
+        return res.size();
+
+    }
     public static void main(String[] args) {
         int arr[]= {5,4,11,1,16,8};
         int n= arr.length;
@@ -63,6 +97,7 @@ public class Lcs {
 
        // System.out.println("lcs of length : "+funRec(0,-1,arr,n));
        //System.out.println(funMemo(0, -1, dp, arr, n));
-       System.out.println(funTabu(arr));
+      // System.out.println(funTabu(arr));
+      System.out.println("length of lis : "+funBinarySearch(arr));
     }
 }
