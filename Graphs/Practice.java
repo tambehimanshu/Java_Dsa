@@ -1,47 +1,34 @@
-import java.util.PriorityQueue;
+import java.util.*;
+public  class Practice{
+    static class Edge{
+        int vertex;
+        int weight;
 
-public class Practice {
-
-    static class Edge implements Comparable<Edge>{
-        int dest;
-        int cost;
-
-        public Edge(int d,int c){
-            this.dest= d;
-            this.cost=c;
-        }
-        @Override
-        public int compareTo(Edge e2){
-            return this.cost - e2.cost;
+        Edge(int vertex , int wt){
+            this.vertex = vertex;
+            this.weight = wt;
         }
     }
+    static class Graph{
+        int V;
+        List<List<Edge>> adj;
 
-    public static int connectcities(int cities[][]){
-        PriorityQueue<Edge> pq= new PriorityQueue<>();
-
-        boolean vis[]=new boolean[cities.length];
-        pq.add(new Edge(0, 0));
-        int finalcost = 0;
-
-        while (!pq.isEmpty()) {
-            Edge curr = pq.remove();
-            if(!vis[curr.dest]){
-                vis[curr.dest]=true;
-
-                finalcost+= curr.cost;
-                for(int i=0;i<cities[curr.dest].length;i++){
-                    if(cities[curr.dest][i]!=0){
-                        pq.add(new Edge(i, cities[curr.dest][i]));
-                    }
-                }
+        Graph(int V){
+            this.V= V;
+            adj = new ArrayList<>();
+            for(int i =0;i<V;i++){
+                adj.add(new ArrayList<>());
             }
-            
-        }return finalcost;
-    
+        
+        }
+        void addEdge(int u, int v , int wt){
+            adj.get(u).add(new Edge(v, wt));
+        }
+
+        
+
     }
-    public static void main(String[]args){
-        int cities[][]={{0,1,2,3,4},{1,0,5,0,7},{2,5,0,6,0},{3,0,6,0,0},{4,7,0,0,0}};
-        int res= connectcities(cities);
-        System.out.println(res);
+    public static void main(String[] args) {
+    
     }
 }
