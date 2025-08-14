@@ -1,7 +1,7 @@
 package Stack;
 import java.util.Stack;
 
-public class LongestvalidParentheses { //tc O(N) sc O(N)
+public class LongestvalidParentheses { //tc O(N) sc O(N) //revised
     // This function returns the length of the longest valid parentheses substring
     // in the given string s.
     public static int longestValidParentheses(String s) {
