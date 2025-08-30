@@ -54,9 +54,30 @@ public class Histogram {
         System.out.println("max area is :"+area);
 
     }
+    public static int largestRectangleArea(int[] arr) { // tc O(n) sc O(n)
+        int n = arr.length;
+      
+         Stack<Integer> s = new Stack<>();
+        int res = 0, tp,curr;
+        for(int i=0;i<n;i++){
+            while(!s.isEmpty()&& arr[s.peek()] >= arr[i]){
+                tp =s.pop();
+                int width=s.isEmpty() ? i : i-s.peek()-1;
+                res= Math.max(res,arr[tp]*width);
+            }
+            s.push(i);
+        }
+        while(!s.isEmpty()){
+            tp = s.pop();
+            curr=arr[tp]*(s.isEmpty() ? n:n-s.peek()-1);
+            res = Math.max(res,curr);
+        }
+        return res;
+    }
     public static void main(String[] args) {
         int arr []= {2,1,5,6,2,3}; //height 
      maxArea(arr);
+        System.out.println(largestRectangleArea(arr));
 
     }
     
