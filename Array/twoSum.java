@@ -15,15 +15,15 @@ public class twoSum {
      
     }
     public static void main(String[] args){
-        int[] nums = {2, 7, 11, 15};
+        int[] nums = {2, 7, 11, 5};
     
         int target = 17;
         int[] result = twosum(nums, target);
 
-        if(!nums.equals(target)){
-            System.out.println("Two numbers that add up to " + target + " are " + nums[result[0]] + " and " + nums[result[1]]);
-
-        }else {
+       if (result != null) {
+            System.out.println("Two numbers that add up to " + target + " are " +
+                               nums[result[0]] + " and " + nums[result[1]]);
+        } else {
             System.out.println("No two numbers in the array add up to the target.");
         }
     }
