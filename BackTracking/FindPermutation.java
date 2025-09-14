@@ -21,4 +21,29 @@ public class FindPermutation { //tc O(n) sc(n)
     }
     
 }
-// tcO(n*n!)
+// tcO(n*n!)   
+
+// str = "abc"
+
+// First loop: pick 'a'
+// → call findper("bc", "a")
+
+// inside: pick 'b' → findper("c", "ab") → prints "abc"
+
+// pick 'c' → findper("b", "ac") → prints "acb"
+
+// Backtrack: pick 'b'
+// → call findper("ac", "b")
+
+// pick 'a' → "bac"
+
+// pick 'c' → "bca"
+
+// Backtrack: pick 'c'
+// → call findper("ab", "c")
+
+// pick 'a' → "cab"
+
+// pick 'b' → "cba"
+
+// ✅ Output: abc, acb, bac, bca, cab, cba
