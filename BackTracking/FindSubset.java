@@ -8,7 +8,7 @@ public class FindSubset {
             if(ans.length()==0){
                 System.out.println("null");
             }
-            System.err.println(ans);
+            System.out.println(ans);
             return;
         }
         //recursion

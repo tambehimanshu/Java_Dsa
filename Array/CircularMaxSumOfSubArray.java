@@ -10,13 +10,15 @@ public class CircularMaxSumOfSubArray {
             maxSum = Math.max(maxSum, currMaxSum);
 
             currMinSum = Math.min(currMinSum+arr[i], arr[i]);
+
             minSum = Math.min(minSum, currMinSum);
+            System.out.println(minSum);
             
             totalSum += arr[i];
 
         }
         int normalSum = maxSum;
-        int circularSum = totalSum - minSum;
+        int circularSum = totalSum - minSum; // circular sum = total (11) - minSum(-11) = 11-(-11) = 22
 
         if(minSum == totalSum){
             return normalSum;

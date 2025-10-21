@@ -6,7 +6,7 @@ public class MaxProductOfSubArray {
           int rightToLeft =1;
 
           for(int i =0;i<n;i++){
-            if (leftToRight ==9) {
+            if (leftToRight ==0) {
                 leftToRight =1;
                 
             }
