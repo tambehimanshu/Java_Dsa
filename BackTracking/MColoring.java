@@ -47,7 +47,7 @@ public class MColoring {
         }
         else{
             System.out.println("graph cant color with "+m +" colors");
-        }
+        }///
     }
     
 }
